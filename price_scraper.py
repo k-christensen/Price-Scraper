@@ -2,8 +2,11 @@ import smtplib
 
 from smtplib import SMTPException
 
-sender = 'katec125@gmail.com'
-receivers = ['katec125@gmail.com']
+from ps_personal_keys import password
+from ps_personal_keys import email
+
+sender = email
+receivers = [email]
 
 message = """
 From: From Person <katec125@gmail.com>
@@ -16,7 +19,7 @@ try:
     session.ehlo()
     session.starttls()
     session.ehlo()
-    session.login(sender, 'password')
+    session.login(sender, password)
     session.sendmail(sender, receivers, message)
     session.quit()
 except SMTPException:
